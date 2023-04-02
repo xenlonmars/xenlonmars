@@ -62,7 +62,7 @@ export default function Checkout() {
                 Your XLON is on the way.
               </Typography>
               <Typography variant="subtitle1">
-                Check your wallet and confirm to burn your DXN tokens to in order to receive your new XLON tokens.
+                Check your wallet and confirm to burn your DXN tokens in order to receive your new XLON tokens.
               </Typography>
             </React.Fragment>
           ) : (

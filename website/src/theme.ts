@@ -25,6 +25,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: `'Work Sans',${roboto.style.fontFamily}`,
+    button: {
+      textTransform: 'none'
+    }
   },
   components: {
     MuiButtonBase: {

@@ -44,7 +44,8 @@ export default function Album() {
               justifyContent="center"
             >
               <Button href="/mint" variant="contained">Mint</Button>
-              <Button variant="outlined">Buy</Button>
+              <Button disabled variant="outlined">Buy</Button>
+              <Button href="/leaderboard" variant="outlined">Leaderboard</Button>
             </Stack>
           </Container>
         </Box>
