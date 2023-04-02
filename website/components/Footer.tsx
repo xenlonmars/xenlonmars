@@ -23,12 +23,12 @@ export default function Album() {
     <Copyright />
     <Grid sx={{ mt: 3 }} spacing={2} alignItems="center" justifyContent="center" container>
       <Grid item>
-        <Link href="https://github.com/xenlonmars/xenlonmars">
+        <Link target="_blank" href="https://github.com/xenlonmars/xenlonmars">
           <GitHubIcon />
         </Link>
       </Grid>
       <Grid item>
-        <Link href="https://twitter.com/xenlonmars">
+        <Link target="_blank" href="https://twitter.com/xenlonmars">
           <TwitterIcon />
         </Link>
       </Grid>
