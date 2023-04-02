@@ -19,7 +19,7 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: 'transparent',
             pt: 8,
             pb: 6,
           }}
@@ -35,7 +35,7 @@ export default function Album() {
               Xenlon Mars
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              When you burn 1 DBXen Token, you will receive 100,000,000 Xenlon Mars tokens
+              For each DBXen Token burned, you receive 100,000,000 Xenlon Mars tokens
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -95,7 +95,7 @@ export default function Album() {
           color="text.secondary"
           component="p"
         >
-          XLON is only for those who have no limits
+          Only for those without limits
         </Typography>
         <Copyright />
       </Box>

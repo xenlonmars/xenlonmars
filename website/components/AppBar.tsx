@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 
 export default function MainAppBar() {
   return (
-    <AppBar position="relative">
+    <AppBar elevation={0} position="relative">
       <Toolbar>
         <Avatar sx={{ mr: 2 }} src="/logo.png"></Avatar>
         <Typography variant="h6" color="inherit" noWrap>
