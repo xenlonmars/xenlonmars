@@ -43,8 +43,8 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button href="/mint" variant="contained">Mint Xenlon Mars</Button>
-              <Button variant="outlined">Buy Xenlon Mars</Button>
+              <Button href="/mint" variant="contained">Mint</Button>
+              <Button variant="outlined">Buy</Button>
             </Stack>
           </Container>
         </Box>
