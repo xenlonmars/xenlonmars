@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
+import { useWeb3React } from '@web3-react/core';
 
 const products = [
   {
@@ -12,15 +12,10 @@ const products = [
     price: '100,000,000',
   },
 ];
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
 
 export default function Review() {
+  const { connector } = useWeb3React();
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
