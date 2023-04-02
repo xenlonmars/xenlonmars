@@ -14,6 +14,7 @@ describe("XenlonMars", function () {
     const XenlonMars = await ethers.getContractFactory("XenlonMars");
     const DbxenErc20 = await ethers.getContractFactory("DBXenERC20");
     forwarder = await Forwarder.deploy();
+    await forwarder.deployed();
     xenlonMars = await XenlonMars.deploy(forwarder.address, addresses.ETHEREUM_MAINNET.DXN);
     dbxenErc20 = await DbxenErc20.attach(addresses.ETHEREUM_MAINNET.DXN);
     await xenlonMars.deployed();
