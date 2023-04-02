@@ -12,7 +12,11 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   return (
-    <React.Fragment>
+    <Box sx={{
+      backgroundImage: "url(https://www.manufosela.es/shooting_stars/hori.png), url(https://www.manufosela.es/shooting_stars/stars_5.png)",
+      backgroundRepeat: "repeat-x, repeat-x repeat-y",
+      transform: "translate3D(0em, 0em, 0)",
+    }}>
       <CssBaseline />
       <AppBar />
       <main>
@@ -54,7 +58,7 @@ export default function Album() {
         </Container>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Box sx={{ p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Conquer the Xenverse
         </Typography>
@@ -69,6 +73,6 @@ export default function Album() {
         <Copyright />
       </Box>
       {/* End footer */}
-    </React.Fragment>
+    </Box>
   );
 }

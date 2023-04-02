@@ -18,11 +18,11 @@ function createData(
 }
 
 const rows = [
-  createData('0xab5801a7d398351b8be11c439e05c5b3259aec9b', 159, 600000000, 24, 4.0),
-  createData('0xab5801a7d398351b8be11c439e05c5b3259aec9b', 237, 900000000, 37, 4.3),
-  createData('0xab5801a7d398351b8be11c439e05c5b3259aec9b', 262, 1000000000, 24, 6.0),
-  createData('0xab5801a7d398351b8be11c439e05c5b3259aec9b', 305, 300000000, 67, 4.3),
-  createData('0xab5801a7d398351b8be11c439e05c5b3259aec9b', 356, 100000000, 49, 3.9),
+  createData('0xab...c9b', 159, 600000000, 24, 4.0),
+  createData('0xab...c9b', 237, 900000000, 37, 4.3),
+  createData('0xab...c9b', 262, 1000000000, 24, 6.0),
+  createData('0xab...c9b', 305, 300000000, 67, 4.3),
+  createData('0xab...c9b', 356, 100000000, 49, 3.9),
 ];
 
 export default function BasicTable() {
