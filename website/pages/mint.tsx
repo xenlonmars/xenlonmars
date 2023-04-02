@@ -16,7 +16,7 @@ import Review from '../components/Review';
 import AppBar from '../components/AppBar';
 import Copyright from '../components/Copyright';
 import { hooks as metaMaskHooks, metaMask } from '../connectors/metaMask'
-import { useWeb3React, Web3ReactHooks, Web3ReactProvider } from '@web3-react/core';
+import { Web3ReactHooks, Web3ReactProvider } from '@web3-react/core';
 import type { MetaMask } from '@web3-react/metamask';
 
 const connectors: [MetaMask, Web3ReactHooks][] = [

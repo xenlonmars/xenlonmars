@@ -4,6 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useWeb3React } from '@web3-react/core';
+import ethers from 'ethers';
 
 export default function Review(props: any) {
   const { amountToBurn } = props;
