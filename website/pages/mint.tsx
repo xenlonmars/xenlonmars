@@ -24,12 +24,12 @@ const connectors: [MetaMask, Web3ReactHooks][] = [
 ];
 const steps = ['Burn details', 'Mint XLON'];
 
-function getStepContent(step: number) {
+function getStepContent(step: number, amountToBurn: any, setAmountToBurn: any) {
   switch (step) {
     case 0:
-      return <BurnDetails />;
+      return <BurnDetails setAmountToBurn={setAmountToBurn} />;
     case 1:
-      return <Review />;
+      return <Review amountToBurn={amountToBurn} />;
     default:
       throw new Error('Unknown step');
   }
@@ -37,6 +37,7 @@ function getStepContent(step: number) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [amountToBurn, setAmountToBurn] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -45,6 +46,8 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  console.log({ amountToBurn })
 
   return (
     <Web3ReactProvider connectors={connectors}>
@@ -73,7 +76,7 @@ export default function Checkout() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {getStepContent(activeStep)}
+              {getStepContent(activeStep, amountToBurn, setAmountToBurn)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
                   <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -83,6 +86,7 @@ export default function Checkout() {
                 <Button
                   variant="contained"
                   onClick={handleNext}
+                  disabled={!amountToBurn}
                   sx={{ mt: 3, ml: 1 }}
                 >
                   {activeStep === steps.length - 1 ? 'Mint' : 'Next'}

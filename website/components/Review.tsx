@@ -5,15 +5,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useWeb3React } from '@web3-react/core';
 
-const products = [
-  {
-    name: 'XLON',
-    desc: 'New tokens mint',
-    price: '100,000,000',
-  },
-];
-
-export default function Review() {
+export default function Review(props: any) {
+  const { amountToBurn } = props;
   const { connector } = useWeb3React();
 
   return (
@@ -22,16 +15,14 @@ export default function Review() {
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
-        ))}
+        <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="XLON" secondary="New tokens mint" />
+          <Typography variant="body2">{amountToBurn * 100000000}</Typography>
+        </ListItem>
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total cost by burn" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            1 DXN
+            {amountToBurn} DXN
           </Typography>
         </ListItem>
       </List>

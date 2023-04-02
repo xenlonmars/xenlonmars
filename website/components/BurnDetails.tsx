@@ -2,11 +2,9 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { useWeb3React } from '@web3-react/core';
 
-export default function BurnDetails() {
-  const { connector } = useWeb3React();
-
+export default function BurnDetails(props: any) {
+  const { setAmountToBurn } = props
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -23,6 +21,10 @@ export default function BurnDetails() {
             type="number"
             autoComplete="amount-to-burn"
             variant="standard"
+            onChange={(event) => {
+              const amount = event.target.value;
+              setAmountToBurn(Number(amount));
+            }}
           />
         </Grid>
       </Grid>
