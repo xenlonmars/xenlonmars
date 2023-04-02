@@ -6,9 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import AppBar from '../components/AppBar';
-import Copyright from '../components/Copyright';
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+import Footer from '../components/Footer';
 
 export default function Album() {
   return (
@@ -48,7 +46,7 @@ export default function Album() {
               justifyContent="center"
             >
               <Button href="/mint" variant="contained">Mint</Button>
-              <Button disabled variant="outlined">Buy</Button>
+              {/* <Button variant="outlined">Buy</Button> */}
               <Button href="/leaderboard" variant="outlined">Leaderboard</Button>
             </Stack>
           </Container>
@@ -57,22 +55,7 @@ export default function Album() {
           {/* leave blank */}
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Conquer the Xenverse
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Only for those without limits
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+      <Footer />
     </Box>
   );
 }
