@@ -47,8 +47,6 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
-  console.log({ amountToBurn })
-
   return (
     <Web3ReactProvider connectors={connectors}>
       <CssBaseline />
