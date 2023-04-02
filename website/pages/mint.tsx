@@ -15,7 +15,13 @@ import BurnDetails from '../components/BurnDetails';
 import Review from '../components/Review';
 import AppBar from '../components/AppBar';
 import Copyright from '../components/Copyright';
+import { hooks as metaMaskHooks, metaMask } from '../connectors/metaMask'
+import { useWeb3React, Web3ReactHooks, Web3ReactProvider } from '@web3-react/core';
+import type { MetaMask } from '@web3-react/metamask';
 
+const connectors: [MetaMask, Web3ReactHooks][] = [
+  [metaMask, metaMaskHooks],
+];
 const steps = ['Burn details', 'Mint XLON'];
 
 function getStepContent(step: number) {
@@ -41,7 +47,7 @@ export default function Checkout() {
   };
 
   return (
-    <React.Fragment>
+    <Web3ReactProvider connectors={connectors}>
       <CssBaseline />
       <AppBar />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
@@ -87,6 +93,6 @@ export default function Checkout() {
         </Paper>
         <Copyright />
       </Container>
-    </React.Fragment>
+    </Web3ReactProvider>
   );
 }
