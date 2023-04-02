@@ -52,7 +52,7 @@ export function Card({
       </div>
       <Chain chainId={activeChainId} />
       <div style={{ marginBottom: '1rem' }}>
-        {/* <Accounts accounts={accounts} provider={provider} ENSNames={ENSNames} /> */}
+        <Accounts accounts={accounts} provider={provider} ENSNames={ENSNames} />
       </div>
       <ConnectWithSelect
         connector={connector}
