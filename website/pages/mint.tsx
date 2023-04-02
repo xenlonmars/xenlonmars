@@ -59,12 +59,10 @@ export default function Checkout() {
           {activeStep === steps.length ? (
             <React.Fragment>
               <Typography variant="h5" gutterBottom>
-                Thank you for your order.
+                Your XLON is on the way.
               </Typography>
               <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
+                Check your wallet and confirm to burn your DXN tokens to in order to receive your new XLON tokens.
               </Typography>
             </React.Fragment>
           ) : (

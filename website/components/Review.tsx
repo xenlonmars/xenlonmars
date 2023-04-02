@@ -34,7 +34,7 @@ export default function Review() {
           </ListItem>
         ))}
         <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
+          <ListItemText primary="Total cost by burn" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
             1 DXN
           </Typography>
