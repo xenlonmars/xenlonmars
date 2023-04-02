@@ -8,10 +8,8 @@ import Container from '@mui/material/Container';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AppBar from '../components/AppBar';
-import Copyright from '../components/Copyright';
+import Footer from '../components/Footer';
 import Table from '../components/Table';
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function CenteredTabs() {
   const [value, setValue] = React.useState(0);
@@ -64,22 +62,7 @@ export default function Album() {
           <Table />
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Conquer the Xenverse
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Only for those without limits
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+      <Footer />
     </React.Fragment>
   );
 }
