@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -16,7 +16,7 @@ import BurnDetails from '../components/BurnDetails';
 import Review from '../components/Review';
 import AppBar from '../components/AppBar';
 import Copyright from '../components/Copyright';
-import { Web3ReactProvider } from '@web3-react/core';
+import Snackbar from '@mui/material/Snackbar';
 import { useWeb3React } from '@web3-react/core';
 import { Contract } from 'ethers';
 import addresses from '../../constants/addresses';
@@ -36,6 +36,7 @@ function getStepContent(step: number, amountToBurn: any, setAmountToBurn: any) {
 }
 
 export default function Checkout() {
+  const [errorMessage, setErrorMessage] = React.useState(null);
   const [activeStep, setActiveStep] = React.useState(0);
   const [amountToBurn, setAmountToBurn] = React.useState(0);
   const { provider } = useWeb3React();
@@ -46,9 +47,9 @@ export default function Checkout() {
       return provider;
     }
   }, [provider]);
-  const xenlonMars = new Contract(addresses.ETHEREUM_MAINNET.XENLON, XenlonMarsAbi, signerOrProvider);
+  const xenlonMars: any = new Contract(addresses.ETHEREUM_MAINNET.XENLON, XenlonMarsAbi, signerOrProvider);
 
-  const handleNext = () => {
+  const handleNext = async () => {
     setActiveStep(activeStep + 1);
   };
 
@@ -56,10 +57,30 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
+  useEffect(() => {
+    if (activeStep === steps.length) {
+      (async function () {
+        try {
+          await xenlonMars.burn(amountToBurn, {
+            gasLimit: 100000
+          });
+        } catch (err: any) {
+          console.log(err);
+          setErrorMessage(err.message);
+        }
+      })();
+    }
+  }, [activeStep]);
+
   return (
     <React.Fragment>
       <CssBaseline />
       <AppBar />
+      <Snackbar
+        open={!!errorMessage}
+        autoHideDuration={6000}
+        message={errorMessage}
+      />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
