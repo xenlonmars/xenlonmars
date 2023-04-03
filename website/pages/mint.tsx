@@ -68,7 +68,7 @@ export default function Checkout() {
             setAlertMessage(null);
           }
           await xenlonMars.burn(amountToBurn, {
-            gasLimit: 1000000
+            gasLimit: 500000
           });
         } catch (err: any) {
           console.error(err);
