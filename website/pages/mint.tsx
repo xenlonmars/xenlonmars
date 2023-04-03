@@ -18,9 +18,10 @@ import AppBar from '../components/AppBar';
 import Copyright from '../components/Copyright';
 import Snackbar from '@mui/material/Snackbar';
 import { useWeb3React } from '@web3-react/core';
-import { Contract } from 'ethers';
+import { Contract, ethers } from 'ethers';
 import addresses from '../../constants/addresses';
 import XenlonMarsAbi from '../../abis/XenlonMars.json';
+import DBXenERC20Abi from '../../abis/DBXenERC20.json';
 
 const steps = ['Burn details', 'Mint XLON'];
 
@@ -39,7 +40,7 @@ export default function Checkout() {
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [activeStep, setActiveStep] = React.useState(0);
   const [amountToBurn, setAmountToBurn] = React.useState(0);
-  const { provider } = useWeb3React();
+  const { provider, account } = useWeb3React();
   const signerOrProvider: any = useMemo(() => {
     if (provider?.['getSigner']) {
       return provider.getSigner();
@@ -47,7 +48,8 @@ export default function Checkout() {
       return provider;
     }
   }, [provider]);
-  const xenlonMars: any = new Contract(addresses.ETHEREUM_MAINNET.XENLON, XenlonMarsAbi, signerOrProvider);
+  const xenlonMars: any = new Contract(addresses.ETHEREUM_MAINNET.XENLONMARS, XenlonMarsAbi, signerOrProvider);
+  const dxn: any = new Contract(addresses.ETHEREUM_MAINNET.DXN, DBXenERC20Abi, signerOrProvider);
 
   const handleNext = async () => {
     setActiveStep(activeStep + 1);
@@ -61,11 +63,16 @@ export default function Checkout() {
     if (activeStep === steps.length) {
       (async function () {
         try {
+          const allowed = await dxn.allowance(account, addresses.ETHEREUM_MAINNET.XENLONMARS);
+          if (allowed <= 0) {
+            const tx = dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
+            await (provider as any).waitForTransaction(tx.hash);
+          }
           await xenlonMars.burn(amountToBurn, {
-            gasLimit: 100000
+            gasLimit: 200000
           });
         } catch (err: any) {
-          console.log(err);
+          console.error(err);
           setErrorMessage(err.message);
         }
       })();
