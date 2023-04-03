@@ -34,7 +34,7 @@ function getStepContent(step: number, amountToBurn: any, setAmountToBurn: any) {
 }
 
 export default function Checkout() {
-  const [errorMessage, setErrorMessage] = React.useState(null);
+  const [alertMessage, setAlertMessage] = React.useState(null);
   const [activeStep, setActiveStep] = React.useState(0);
   const [amountToBurn, setAmountToBurn] = React.useState(0);
   const { provider, account } = useWeb3React();
@@ -62,15 +62,18 @@ export default function Checkout() {
         try {
           const allowed = await dxn.allowance(account, addresses.ETHEREUM_MAINNET.XENLONMARS);
           if (allowed <= 0) {
-            const tx = dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
+            const tx = await dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
+            (setAlertMessage as any)("please wait");
             await (provider as any).waitForTransaction(tx.hash);
+            setAlertMessage(null);
           }
           await xenlonMars.burn(amountToBurn, {
             gasLimit: 200000
           });
         } catch (err: any) {
           console.error(err);
-          setErrorMessage(err.message);
+          setAlertMessage(err.message);
+          setTimeout(() => setAlertMessage(null), 4000);
         }
       })();
     }
@@ -81,9 +84,9 @@ export default function Checkout() {
       <CssBaseline />
       <AppBar />
       <Snackbar
-        open={!!errorMessage}
+        open={!!alertMessage}
         autoHideDuration={6000}
-        message={errorMessage}
+        message={alertMessage}
       />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
