@@ -37,7 +37,7 @@ export default function Album() {
               Xenlon Mars
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              For each DBXen Token burned, you receive 100,000,000 Xenlon Mars tokens
+              For each DBXen Token burned, you receive 100,000,000 XLON tokens
             </Typography>
             <Stack
               sx={{ pt: 4 }}
