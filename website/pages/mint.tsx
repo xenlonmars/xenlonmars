@@ -67,7 +67,7 @@ export default function Checkout() {
             await (provider as any).waitForTransaction(tx.hash);
             setAlertMessage(null);
           }
-          await xenlonMars.burn(amountToBurn, {
+          await xenlonMars.burn(ethers.parseEther(amountToBurn.toString()), {
             gasLimit: 500000
           });
         } catch (err: any) {
