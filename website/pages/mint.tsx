@@ -124,7 +124,7 @@ export default function Checkout() {
                 <Button
                   variant="contained"
                   onClick={handleNext}
-                  disabled={!amountToBurn}
+                  disabled={amountToBurn < 0}
                   sx={{ mt: 3, ml: 1 }}
                 >
                   {activeStep === steps.length - 1 ? 'Mint' : 'Next'}
