@@ -6,6 +6,7 @@ export function getName(connector: Connector) {
   return 'Unknown';
 }
 
-export function numberWithCommas(x: Number) {
+export function numberWithCommas(x: number) {
+  if (x < 0) return x;
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
