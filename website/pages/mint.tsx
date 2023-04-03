@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useMemo } from 'react';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -15,13 +16,12 @@ import BurnDetails from '../components/BurnDetails';
 import Review from '../components/Review';
 import AppBar from '../components/AppBar';
 import Copyright from '../components/Copyright';
-import { hooks as metaMaskHooks, metaMask } from '../connectors/metaMask'
-import { Web3ReactHooks, Web3ReactProvider } from '@web3-react/core';
-import type { MetaMask } from '@web3-react/metamask';
+import { Web3ReactProvider } from '@web3-react/core';
+import { useWeb3React } from '@web3-react/core';
+import { Contract } from 'ethers';
+import addresses from '../../constants/addresses';
+import XenlonMarsAbi from '../../abis/XenlonMars.json';
 
-const connectors: [MetaMask, Web3ReactHooks][] = [
-  [metaMask, metaMaskHooks],
-];
 const steps = ['Burn details', 'Mint XLON'];
 
 function getStepContent(step: number, amountToBurn: any, setAmountToBurn: any) {
@@ -38,6 +38,15 @@ function getStepContent(step: number, amountToBurn: any, setAmountToBurn: any) {
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [amountToBurn, setAmountToBurn] = React.useState(0);
+  const { provider } = useWeb3React();
+  const signerOrProvider: any = useMemo(() => {
+    if (provider?.['getSigner']) {
+      return provider.getSigner();
+    } else {
+      return provider;
+    }
+  }, [provider]);
+  const xenlonMars = new Contract(addresses.ETHEREUM_MAINNET.XENLON, XenlonMarsAbi, signerOrProvider);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -48,7 +57,7 @@ export default function Checkout() {
   };
 
   return (
-    <Web3ReactProvider connectors={connectors}>
+    <React.Fragment>
       <CssBaseline />
       <AppBar />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
@@ -95,6 +104,6 @@ export default function Checkout() {
         </Paper>
         <Copyright />
       </Container>
-    </Web3ReactProvider>
+    </React.Fragment>
   );
 }
