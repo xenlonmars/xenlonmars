@@ -23,6 +23,40 @@ export default function Album() {
       Only for those without limits
     </Typography>
     <Copyright />
+    <Grid direction="column" justifyContent="center" alignItems="center" container alignContent="center">
+      <Grid item>
+        <Grid direction="column" justifyContent="center" alignItems="center" container alignContent="center">
+          <Grid item>
+            <Typography variant="caption">
+              XenlonMars contract
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="caption">
+              <Link underline="none" target="_blank" href="https://etherscan.io/token/0x529608dcA34504Ab12cCc55Efb5bB091D0188500">
+                0x529608dcA34504Ab12cCc55Efb5bB091D0188500
+              </Link>
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid direction="column" justifyContent="center" alignItems="center" container alignContent="center">
+          <Grid item>
+            <Typography variant="caption">
+              XenlonMarsERC20 contract
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="caption">
+              <Link underline="none" target="_blank" href="https://etherscan.io/token/0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58">
+                0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58
+              </Link>
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
     <Grid sx={{ mt: 3 }} spacing={2} alignItems="center" justifyContent="center" container>
       <Grid item>
         <Link target="_blank" href="https://github.com/xenlonmars/xenlonmars">
@@ -35,12 +69,12 @@ export default function Album() {
         </Link>
       </Grid>
       <Grid item>
-        <Link target="_blank" href="https://etherscan.io/address/0x529608dcA34504Ab12cCc55Efb5bB091D0188500">
+        <Link target="_blank" href="https://etherscan.io/token/0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58">
           <InsertDriveFileIcon />
         </Link>
       </Grid>
       <Grid item>
-        <Link target="_blank" href="https://etherscan.io/token/0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58">
+        <Link target="_blank" href="https://etherscan.io/address/0x529608dcA34504Ab12cCc55Efb5bB091D0188500">
           <TokenIcon />
         </Link>
       </Grid>
