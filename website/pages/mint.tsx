@@ -61,16 +61,13 @@ export default function Checkout() {
     if (activeStep === steps.length) {
       (async function () {
         try {
-          const allowed = BigNumber.from(await dxn.allowance(account, addresses.ETHEREUM_MAINNET.XENLONMARS));
-          const atb = ethers.parseEther(amountToBurn.toString());
-          if (allowed.lte(atb)) {
-            const tx = await dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
-            (setAlertMessage as any)("please wait");
-            await (provider as any).waitForTransaction(tx.hash);
-            setAlertMessage(null);
-          }
+          let tx;
+          tx = await dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
+          (setAlertMessage as any)("please wait");
+          await (provider as any).waitForTransaction(tx.hash);
+          setAlertMessage(null);
           (setAlertMessage as any)("unused gas will be returned to you");
-          const tx = await xenlonMars.burn(ethers.parseEther(amountToBurn.toString()), {
+          tx = await xenlonMars.burn(ethers.parseEther(amountToBurn.toString()), {
             gasLimit: 500000
           });
           await (provider as any).waitForTransaction(tx.hash);
