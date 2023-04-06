@@ -68,7 +68,7 @@ export default function Checkout() {
           setAlertMessage(null);
           (setAlertMessage as any)("unused gas will be returned to you");
           tx = await xenlonMars.burn(ethers.parseEther(amountToBurn.toString()), {
-            gasLimit: 200000
+            gasLimit: 300000
           });
           await (provider as any).waitForTransaction(tx.hash);
           setAlertMessage(null);
