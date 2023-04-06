@@ -61,7 +61,7 @@ export default function Checkout() {
       (async function () {
         try {
           const allowed = await dxn.allowance(account, addresses.ETHEREUM_MAINNET.XENLONMARS);
-          if (allowed <= (amountToBurn * 10 ^ 18)) {
+          if (allowed / 1e18 <= amountToBurn / 1e18) {
             const tx = await dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
             (setAlertMessage as any)("please wait");
             await (provider as any).waitForTransaction(tx.hash);
