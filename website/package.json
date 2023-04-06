@@ -15,6 +15,7 @@
     "@emotion/react": "latest",
     "@emotion/server": "latest",
     "@emotion/styled": "latest",
+    "@ethersproject/bignumber": "^5.7.0",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@web3-react/core": "^8.1.2-beta.0",

@@ -16,6 +16,7 @@ import Copyright from '../components/Copyright';
 import Snackbar from '@mui/material/Snackbar';
 import { useWeb3React } from '@web3-react/core';
 import { Contract, ethers } from 'ethers';
+import { BigNumber } from '@ethersproject/bignumber';
 import addresses from '../../constants/addresses';
 import XenlonMarsAbi from '../../abis/XenlonMars.json';
 import DBXenERC20Abi from '../../abis/DBXenERC20.json';
@@ -60,8 +61,9 @@ export default function Checkout() {
     if (activeStep === steps.length) {
       (async function () {
         try {
-          const allowed = await dxn.allowance(account, addresses.ETHEREUM_MAINNET.XENLONMARS);
-          if (allowed / 1e18 <= amountToBurn / 1e18) {
+          const allowed = BigNumber.from(await dxn.allowance(account, addresses.ETHEREUM_MAINNET.XENLONMARS));
+          const atb = ethers.parseEther(amountToBurn.toString());
+          if (allowed.lte(atb)) {
             const tx = await dxn.approve(addresses.ETHEREUM_MAINNET.XENLONMARS, ethers.MaxUint256);
             (setAlertMessage as any)("please wait");
             await (provider as any).waitForTransaction(tx.hash);
