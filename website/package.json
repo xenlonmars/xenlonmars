@@ -18,13 +18,15 @@
     "@ethersproject/bignumber": "^5.7.0",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@uniswap/widgets": "^2.51.2",
     "@web3-react/core": "^8.1.2-beta.0",
     "@web3-react/metamask": "^8.1.2-beta.0",
     "@web3-react/types": "^8.1.2-beta.0",
     "ethers": "^6.2.3",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@types/node": "latest",

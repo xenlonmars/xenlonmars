@@ -17,7 +17,7 @@ export default function MainAppBar() {
             <Grid item>
               <Grid alignItems="center" alignContent="center" container>
                 <Grid item>
-                  <Avatar sx={{ mr: 2 }} src="/logo.png"></Avatar>
+                  <Avatar sx={{ mr: 2 }} src="/head.svg"></Avatar>
                 </Grid>
                 <Grid item>
                   <Typography variant="h6" color="inherit" noWrap>

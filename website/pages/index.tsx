@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import AppBar from '../components/AppBar';
 import Footer from '../components/Footer';
+import UniswapWidget from '../components/UniswapWidget';
 
 export default function Album() {
   return (
@@ -49,6 +50,7 @@ export default function Album() {
               {/* <Button variant="outlined">Buy</Button> */}
               <Button href="/leaderboard" variant="outlined">Leaderboard</Button>
             </Stack>
+            <UniswapWidget />
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
