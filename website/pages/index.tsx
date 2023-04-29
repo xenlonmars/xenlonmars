@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import AppBar from '../components/AppBar';
 import Footer from '../components/Footer';
 import UniswapWidget from '../components/UniswapWidget';
@@ -19,7 +20,6 @@ export default function Album() {
       <CssBaseline />
       <AppBar />
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'transparent',
@@ -47,15 +47,15 @@ export default function Album() {
               justifyContent="center"
             >
               <Button href="/mint" variant="contained">Mint</Button>
-              {/* <Button variant="outlined">Buy</Button> */}
               <Button href="/leaderboard" variant="outlined">Leaderboard</Button>
             </Stack>
-            <UniswapWidget />
+            <Grid justifyContent="center" alignItems="center" container>
+              <Grid item>
+                <UniswapWidget />
+              </Grid>
+            </Grid>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* leave blank */}
-        </Container>
       </main>
       <Footer />
     </Box>
