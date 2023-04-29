@@ -1,10 +1,10 @@
 import { SwapWidget } from '@uniswap/widgets';
-import { hooks } from '../connectors/metaMask';
+// import { hooks } from '../connectors/metaMask';
 import '@uniswap/widgets/fonts.css';
 
-const jsonRpcEndpoint = 'https://mainnet.infura.io/v3/95c26ba5839642de9aa2e205d288fd68';
-const { useProvider } = hooks;
-const TREX = '0xB52d2497Cf9cB263D2bD3A2E980823d28D53C80b';
+// const jsonRpcEndpoint = 'https://mainnet.infura.io/v3/95c26ba5839642de9aa2e205d288fd68';
+// const { useProvider } = hooks;
+// const TREX = '0xB52d2497Cf9cB263D2bD3A2E980823d28D53C80b';
 const tokenList = [
   {
     "name": "Dai Stablecoin",
@@ -32,7 +32,7 @@ const tokenList = [
   },
   {
     "name": "T. Rex",
-    "address": "0xB52d2497Cf9cB263D2bD3A2E980823d28D53C80b",
+    "address": "0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58",
     "symbol": "TREX",
     "decimals": 18,
     "chainId": 1,
@@ -41,7 +41,7 @@ const tokenList = [
 ];
 
 const UniswapWidget = () => {
-  const provider = useProvider();
+  // const provider = useProvider();
   return (
     <div className="Uniswap" style={{ width: '100%' }}>
       <SwapWidget
