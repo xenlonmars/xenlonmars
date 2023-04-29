@@ -1,10 +1,8 @@
-import { SwapWidget } from '@uniswap/widgets';
-// import { hooks } from '../connectors/metaMask';
+import { darkTheme, SwapWidget } from '@uniswap/widgets';
+import { hooks } from '../connectors/metaMask';
 import '@uniswap/widgets/fonts.css';
 
-// const jsonRpcEndpoint = 'https://mainnet.infura.io/v3/95c26ba5839642de9aa2e205d288fd68';
-// const { useProvider } = hooks;
-// const TREX = '0xB52d2497Cf9cB263D2bD3A2E980823d28D53C80b';
+const { useProvider } = hooks;
 const tokenList = [
   {
     "name": "Dai Stablecoin",
@@ -31,25 +29,24 @@ const tokenList = [
     "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
   },
   {
-    "name": "T. Rex",
+    "name": "Xenlon Mars",
     "address": "0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58",
-    "symbol": "TREX",
+    "symbol": "XLON",
     "decimals": 18,
     "chainId": 1,
-    "logoURI": "https://github.com/trexmoney/assets/raw/main/images/trex-token-logo.png"
+    "logoURI": "https://github.com/xenlonmars/xenlonmars/blob/main/website/public/logo.png?raw=true"
   },
 ];
 
 const UniswapWidget = () => {
-  // const provider = useProvider();
+  const provider = useProvider();
   return (
     <div className="Uniswap" style={{ width: '100%' }}>
       <SwapWidget
-        // provider={provider}
-        // jsonRpcEndpoint={jsonRpcEndpoint}
-        // tokenList={tokenList}
-        // defaultOutputTokenAddress={TREX}
-        // width="100%"
+        provider={provider}
+        tokenList={tokenList}
+        theme={darkTheme}
+        defaultOutputTokenAddress="0x36ff4DaE0E88113D68B1209e245B0e3Af92E9D58"
       />
     </div>
   );

@@ -49,7 +49,7 @@ export default function Album() {
               <Button href="/mint" variant="contained">Mint</Button>
               <Button href="/leaderboard" variant="outlined">Leaderboard</Button>
             </Stack>
-            <Grid justifyContent="center" alignItems="center" container>
+            <Grid justifyContent="center" alignItems="center" sx={{ pt: 4 }} container>
               <Grid item>
                 <UniswapWidget />
               </Grid>
