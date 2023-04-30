@@ -11,18 +11,17 @@ function createData(
   name: string,
   calories: number,
   fat: number,
-  carbs: number,
   protein: number,
 ) {
-  return { name, calories, fat, carbs, protein };
+  return { name, calories, fat, protein };
 }
 
 const rows = [
-  createData('0xab...c9b', 159, 600000000, 24, 4.0),
-  createData('0xab...c9b', 237, 900000000, 37, 4.3),
-  createData('0xab...c9b', 262, 1000000000, 24, 6.0),
-  createData('0xab...c9b', 305, 300000000, 67, 4.3),
-  createData('0xab...c9b', 356, 100000000, 49, 3.9),
+  createData('0xab...c9b', 159, 600000000, 4.0),
+  createData('0xab...c9b', 237, 900000000, 4.3),
+  createData('0xab...c9b', 262, 1000000000, 6.0),
+  createData('0xab...c9b', 305, 300000000, 4.3),
+  createData('0xab...c9b', 356, 100000000, 3.9),
 ];
 
 export default function BasicTable() {
@@ -34,7 +33,6 @@ export default function BasicTable() {
             <TableCell>Address</TableCell>
             <TableCell align="right">Burned</TableCell>
             <TableCell align="right">Minted</TableCell>
-            <TableCell align="right">Attempts</TableCell>
             <TableCell align="right">Rank</TableCell>
           </TableRow>
         </TableHead>
@@ -49,7 +47,6 @@ export default function BasicTable() {
               </TableCell>
               <TableCell align="right">{row.calories}</TableCell>
               <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
               <TableCell align="right">{row.protein}</TableCell>
             </TableRow>
           ))}
