@@ -6,9 +6,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import dynamic from 'next/dynamic';
 import AppBar from '../components/AppBar';
 import Footer from '../components/Footer';
-import UniswapWidget from '../components/UniswapWidget';
+
+const UniswapWidget = dynamic(
+  () => import('../components/UniswapWidget'),
+  { ssr: false }
+);
 
 export default function Album() {
   return (
@@ -47,7 +52,7 @@ export default function Album() {
               justifyContent="center"
             >
               <Button href="/mint" variant="contained">Mint</Button>
-              <Button href="/leaderboard" variant="outlined">Leaderboard</Button>
+              {/* <Button href="/leaderboard" variant="outlined">Leaderboard</Button> */}
             </Stack>
             <Grid justifyContent="center" alignItems="center" sx={{ pt: 4 }} container>
               <Grid item>
