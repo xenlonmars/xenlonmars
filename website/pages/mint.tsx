@@ -17,9 +17,9 @@ import Snackbar from '@mui/material/Snackbar';
 import { useWeb3React } from '@web3-react/core';
 import { Contract, ethers } from 'ethers';
 import { BigNumber } from '@ethersproject/bignumber';
-import addresses from '../../constants/addresses';
-import XenlonMarsAbi from '../../abis/XenlonMars.json';
-import DBXenERC20Abi from '../../abis/DBXenERC20.json';
+import addresses from '../constants/addresses';
+import XenlonMarsAbi from '../abis/XenlonMars.json';
+import DBXenERC20Abi from '../abis/DBXenERC20.json';
 
 const steps = ['Burn details', 'Mint XLON'];
 
@@ -48,11 +48,9 @@ export default function Checkout() {
   }, [provider]);
   const xenlonMars: any = new Contract(addresses.ETHEREUM_MAINNET.XENLONMARS, XenlonMarsAbi, signerOrProvider);
   const dxn: any = new Contract(addresses.ETHEREUM_MAINNET.DXN, DBXenERC20Abi, signerOrProvider);
-
   const handleNext = async () => {
     setActiveStep(activeStep + 1);
   };
-
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
